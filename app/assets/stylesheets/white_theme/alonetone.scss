@@ -1,5 +1,4 @@
 body {
-	font-family: $sans-font;
 	background-color: $body-background-color;
 }
 
@@ -14,7 +13,6 @@ ul {
 	flex-direction: column;
 	margin-bottom: $baseline * 2;
 	background-color: $white;
-
 	justify-content: space-between;
 	@include samo-shadow-and-radius();
 	h1, h2 {
@@ -37,22 +35,12 @@ ul {
 	}
 }
 
-.footer_box {
-	margin-bottom: $baseline;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	text-align: right;
-	background-color: $box-background-color;
-}
-
-
 .below_box {
 	text-align: right;
 	a.view_all {
 		font-size: 15px;
 		font-weight: normal;
 		font-family: $medium-sans-font;
-		// display: inline-block;
 		color: #868686;
 		border: 0;
 		margin-right: 4px;
@@ -78,115 +66,26 @@ ul {
 			}
 		}
 		.icon_caret_path {
-			// stroke: #868686;
 			stroke: $samo-orange;
 		}
 		&:hover {
 			text-decoration: none;
 			span {
 				color: $samo-orange;
-				// background-color: #FFF;
 				text-decoration: none;
 				.icon_caret_path {
 					stroke: $samo-orange;
 				}
-
 			}
 		}
 	}
 }
 
-/* USER LISTS */
-
-#user_index {
-	display: flex;
-
-	@include match-dynamic-site-width();
-	flex-wrap: wrap;
-	justify-content: space-between;
-	#static_header {
-		width: 30%;
-		@media #{$tablet} {
-			width: 100%;
-		}
-		#links {
-			width: 230px;
-			li {
-				display: block;
-				float: none;
-				a {
-					float: none;
-				}
-			}
-		}
-	}
-	#large_users_grid {
-		display: flex;
-		width: 70%;
-		margin-top: 52px;
-
-		flex-wrap: wrap;
-		justify-content: space-between;
-		@media #{$tablet} {
-			width: 100%;
-		}
-		div.clear {
-			display: none;
-		}
-		div.user {
-			position: relative;
-			width: 150px;
-			margin-bottom: 30px;
-			text-align: center;
-			img.cover {
-				width: 125px;
-				height: 125px;
-			}
-			.name {
-				font-size: 13px;
-				display: block;
-				margin-top: 4px;
-				&:hover {
-					text-decoration: underline;
-				}
-			}
-		}
-	}
+/* PROGRESS INDICATOR (COMMENT POSTING) */
+div.small_spinner {
+  display: none;
+  background: image-url('svg/icon_spinner.svg') no-repeat center center;
+  height: 20px;
+  width: 20px;
+  background-size: 100%;
 }
-
-/* SEARCH RESULTS */
-
-.tracks_search_results {
-	background-color: #FFF;
-
-	@include samo-shadow-and-radius();
-}
-
-#user_search_results {
-	display: flex;
-	margin-top: 60px;
-
-	@include match-dynamic-site-width();
-	flex-wrap: wrap;
-	justify-content: space-between;
-	div.user {
-		position: relative;
-		width: 150px;
-		margin-bottom: 30px;
-		text-align: center;
-		img.cover {
-			width: 125px;
-			height: 125px;
-		}
-		.name {
-			font-size: 13px;
-			display: block;
-			&:hover {
-				text-decoration: underline;
-			}
-		}
-	}
-}
-
-
-

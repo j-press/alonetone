@@ -8,12 +8,21 @@ Alonetone::Application.routes.draw do
   end
 
   namespace :admin do
+    resources :users
     resources :comments do
        member do
         put :unspam
         put :spam
       end
-
+      collection do
+        put :mark_group_as_spam
+      end
+    end
+    resources :assets do
+      member do
+        put :unspam
+        put :spam
+      end
       collection do
         put :mark_group_as_spam
       end
@@ -68,9 +77,6 @@ Alonetone::Application.routes.draw do
     get 'signup', to: 'users#new'
     get 'settings', to: 'users#edit'
     get '/activate/:perishable_token', to: 'users#activate'
-
-    # shortcut to profile
-    get ':login/bio' => 'users#bio', :as => 'profile'
 
     get '/latest.:format' => 'assets#latest'
 
@@ -131,13 +137,12 @@ Alonetone::Application.routes.draw do
         post :attach_pic
         get :sudo
       end
+      resource 'profile'
       resources 'source_files' #:path_prefix => ':login'
       resources 'tracks', controller: :assets do
         member do
           get :share
           get :stats
-          put :spam
-          put :unspam
         end
         collection do
           get  :latest

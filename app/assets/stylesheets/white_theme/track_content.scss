@@ -1,7 +1,7 @@
 .track-content {
   max-width: 700px;
   @include match-dynamic-site-width('narrow');
-   > * {
+  > * {
     background-color: white;
     @include samo-shadow-and-radius();
   }
@@ -26,9 +26,20 @@
         color: #EB7B0C;
       }
     }
+    .download-link {
+      float: right;
+      a {
+        width: 32px;
+        height: 32px;
+        display: block;
+        background-size: 29px 29px;
+        margin-right: 8px;
+        background-image: image-url('svg/icon_download.svg');
+      }
+    }
     .track-favorite {
       width: 30px;
-      margin-right:10px;
+      margin-right: 10px;
       float: right;
       position: relative;
     }
@@ -54,7 +65,8 @@
       line-height: 32px;
     }
     h3 {
-      margin-top: $baseline / 2;
+      // margin-top: $baseline / 2;
+      margin-top: -16px;
       margin-bottom: $baseline;
       color: $samo-gray;
     }
@@ -108,7 +120,7 @@
         svg {
           width: 17px;
           position: relative;
-          top: -4px;
+          top: -5px;
         }
       }
     }
@@ -148,6 +160,8 @@
   }
 
   .track-edit {
+    margin-bottom: $baseline * 2; // to match MASS_EDIT
+
     header {
       input {
         font-family: $sans-font;
@@ -197,6 +211,23 @@
           @include default-button('admin');
         }
       }
+    }
+  }
+  // COPY FROM MASS_EDIT
+  > div.box {
+    > .static_content {
+      padding: $baseline / 2 $baseline;
+      box-sizing: border-box;
+    }
+    h2.box {
+      margin-left: $baseline;
+      margin-right: $baseline;
+      padding-left: 0;
+      padding-right: 0;
+      margin-top: 0;
+      box-shadow: none;
+      border-radius: 0;
+      box-sizing: border-box;
     }
   }
 }

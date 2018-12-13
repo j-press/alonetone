@@ -4,12 +4,15 @@ header#site_header {
   height: 40px;
   .header_inner {
     position: relative;
-    @include match-dynamic-site-width();
+    // @include match-dynamic-site-width();
     margin-right: auto;
     margin-left: auto;
-    max-width: 1100px;
+    max-width: 1032px;
     padding: 0 36px;
     box-sizing: border-box;
+    @media #{$mobile} {
+      width: 100%;
+    }
     .header_logo {
       position: absolute;
       top: 4px;

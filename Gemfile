@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.2.1'
+gem 'rails', '~> 5.2.2'
 gem 'mysql2'
 
 gem 'thredded'
@@ -82,7 +82,7 @@ group :development do
   gem 'sqlite3'
   gem 'perf_check'
   gem 'annotate'
-  gem 'rubocop', '~> 0.60.0', require: false
+  gem 'rubocop', '~> 0.61.1', require: false
 end
 
 ## Who loves tests! You do? You do!
