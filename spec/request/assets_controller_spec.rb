@@ -197,13 +197,6 @@ RSpec.describe AssetsController, type: :request do
       expect(response).to redirect_to('/arthur/tracks/mass_edit?assets%5B%5D=' + Asset.last.id.to_s)
     end
 
-    it "should email followers and generate waveform via queue" do
-      users(:sudara).add_or_remove_followee(users(:arthur).id)
-      post '/arthur/tracks', params: { asset_data: [fixture_file_upload('assets/muppets.mp3', 'audio/mp3')] }
-      expect(enqueued_jobs.size).to eq 1
-      expect(enqueued_jobs.first[:queue]).to eq "mailers"
-    end
-
     it 'should successfully upload 2 mp3s' do
       post '/arthur/tracks', params: { asset_data: [fixture_file_upload('assets/muppets.mp3', 'audio/mpeg'),
                                                                       fixture_file_upload('assets/muppets.mp3', 'audio/mpeg')] }
