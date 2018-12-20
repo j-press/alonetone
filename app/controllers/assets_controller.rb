@@ -33,7 +33,7 @@ class AssetsController < ApplicationController
     else
       @assets = @user.assets.published
     end
-    @assets = @assets.recent.paginate(per_page: 200, page: params[:page])
+    @pagy, @assets = pagy(@assets.recent, page_param: :page)
 
     respond_to do |format|
       format.html # index.rhtml
@@ -109,7 +109,7 @@ class AssetsController < ApplicationController
   def mass_edit
     redirect_to_default && (return false) unless logged_in? && (current_user.id == @user.id) || admin?
     # currently we redirect asset # publish to mass_edit with params["assets"]
-    if params["assets"].first && @user.assets.not_current(params["assets"].first).descriptionless.count > 0
+    if params["assets"]&.first && @user.assets.not_current(params["assets"]&.first).descriptionless.count > 0
       @descriptionless = @user.assets.not_current(params["assets"].first).descriptionless
     elsif @user.assets.descriptionless.count > 2
       @descriptionless = @user.assets.descriptionless
